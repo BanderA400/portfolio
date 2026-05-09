@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بندر | مطور برمجيات</title>
+    <meta name="description" content="مؤسسة بندر لتقنية المعلومات: تطوير لوحات تحكم، منصات تقنية، MVP، وتحسين المنتجات البرمجية باستخدام Laravel وFilament.">
+    <meta name="author" content="مؤسسة بندر لتقنية المعلومات">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="بندر | مطور برمجيات">
+    <meta property="og:description" content="تطوير لوحات تحكم، منصات تقنية، MVP، وتحسين المنتجات البرمجية باستخدام Laravel وFilament.">
+    <meta property="og:locale" content="ar_SA">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="بندر | مطور برمجيات">
+    <meta name="twitter:description" content="تطوير لوحات تحكم ومنصات تقنية باستخدام Laravel وFilament.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231A1A1A'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' fill='%23FAFAF9' font-size='34' font-family='Arial, sans-serif' font-weight='700'%3Eب%3C/text%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&amp;family=Tajawal:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @font-face {
+            font-family: 'Thmanyah Sans';
+            src: url('assets/fonts/thmanyahsans/thmanyahsans-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Thmanyah Sans';
+            src: url('assets/fonts/thmanyahsans/thmanyahsans-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Thmanyah Sans';
+            src: url('assets/fonts/thmanyahsans/thmanyahsans-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Thmanyah Sans';
+            src: url('assets/fonts/thmanyahsans/thmanyahsans-Black.woff2') format('woff2');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg: #FAFAF9;
+            --text: #1A1A1A;
+            --text-secondary: #5C5C5C;
+            --border: #E5E4E1;
+            --card-bg: #FFFFFF;
+            --tag-bg: #F5F4F2;
+            --highlight: #9966ff;
+            --highlight-dark: #7a4de6;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Sora', sans-serif;
+            --font-ar: 'Thmanyah Sans', 'Tajawal', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        html[lang="ar"] body { font-family: var(--font-ar); }
+        html[lang="ar"] .hero h1,
+        html[lang="ar"] .section-title,
+        html[lang="ar"] .nav-logo,
+        html[lang="ar"] .stat h3,
+        html[lang="ar"] .card h4,
+        html[lang="ar"] .project-info h4,
+        html[lang="ar"] .tech-stack-card h4,
+        html[lang="ar"] .contact-info h3,
+        html[lang="ar"] .otw-container h2,
+        html[lang="ar"] .exp-meta .company {
+            font-family: var(--font-ar);
+        }
+
+        ::selection { background: var(--highlight); color: #fff; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1.25rem 2.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(250, 250, 249, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s, padding 0.3s;
+        }
+        nav.scrolled { border-bottom-color: var(--border); padding: 0.9rem 2.5rem; }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 700; font-size: 1.35rem;
+            text-decoration: none; color: var(--text);
+            letter-spacing: -0.02em;
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .logo-mark {
+            width: 34px; height: 34px; border-radius: 50%;
+            border: 2px solid var(--border);
+            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--text); color: var(--bg);
+            font-size: 0.95rem; font-weight: 700;
+        }
+        .nav-logo span { color: var(--text-secondary); font-weight: 400; margin-left: -0.15rem; }
+
+        .nav-links { display: flex; gap: 1.6rem; align-items: center; }
+        .nav-links a, .lang-toggle {
+            text-decoration: none; color: var(--text-secondary);
+            font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            background: var(--text) !important; color: var(--bg) !important;
+            padding: 0.55rem 1.3rem !important; border-radius: 100px;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+
+        .lang-toggle {
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 0.45rem 0.9rem;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .lang-toggle:hover { border-color: var(--highlight); }
+
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 8rem 2.5rem 4rem;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .hero-content { width: 100%; }
+
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.8rem; font-weight: 500; color: var(--text-secondary);
+            letter-spacing: 0.06em; text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+        html[lang="ar"] .hero-eyebrow, html[lang="ar"] .section-label { letter-spacing: 0; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--highlight); animation: pulse 2s ease infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.85); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700; line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            opacity: 0; animation: fadeUp 0.6s ease forwards 0.35s;
+        }
+        html[lang="ar"] .hero h1 { line-height: 1.28; }
+        .highlight {
+            background: linear-gradient(135deg, var(--highlight), #c4a0ff);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.15rem; color: var(--text-secondary);
+            max-width: 660px; line-height: 1.8;
+            margin-bottom: 2.5rem;
+            opacity: 0; animation: fadeUp 0.6s ease forwards 0.5s;
+        }
+
+        .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.65s; }
+        .btn-primary, .btn-secondary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.85rem 1.8rem; border-radius: 100px;
+            text-decoration: none; font-size: 0.9rem; font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+        }
+        .btn-primary { background: var(--text); color: var(--bg); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
+        .btn-secondary { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--highlight); background: #F0EFED; }
+
+        .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.6s ease forwards 0.8s; }
+        .stat h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; }
+        .stat p { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.15rem; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+        section { padding: 6rem 2.5rem; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
+        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1rem; }
+        .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; }
+        .section-headline { font-size: 0.95rem; color: var(--text-secondary); max-width: 660px; line-height: 1.7; margin-top: 0.5rem; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+        .about-text p { color: var(--text-secondary); margin-bottom: 1.25rem; font-size: 1rem; }
+        .about-text p strong { color: var(--text); font-weight: 600; }
+
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+        .skill-tag, .project-tags span, .exp-tags span {
+            padding: 0.35rem 0.8rem; border-radius: 100px;
+            background: var(--tag-bg); font-size: 0.75rem;
+            font-weight: 500; color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .skill-tag { padding: 0.45rem 1rem; font-size: 0.8rem; }
+        .skill-tag:hover { background: var(--highlight); border-color: var(--highlight-dark); color: #fff; }
+
+        .about-highlights, .tech-stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+        .cards-grid, .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+        .highlight-card, .card, .project-card, .tech-stack-card, .exp-card, .contact-form-card, .social-link {
+            border: 1px solid var(--border); border-radius: 16px; background: var(--card-bg);
+            transition: border-color 0.3s, transform 0.2s;
+        }
+        .highlight-card:hover, .card:hover, .project-card:hover, .exp-card:hover, .social-link:hover { border-color: var(--highlight); transform: translateY(-2px); }
+        .highlight-card, .card, .tech-stack-card { padding: 1.75rem; }
+        .highlight-card .icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .highlight-card h4, .card h4, .project-info h4, .tech-stack-card h4 { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .highlight-card p, .card p, .project-info p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+        .project-info { padding: 1.75rem; }
+        .project-info p { margin-bottom: 1rem; }
+        .project-tags, .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+        .project-link { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 1.1rem; font-size: 0.82rem; font-weight: 600; color: var(--text); text-decoration: none; transition: gap 0.2s; }
+        .project-link:hover { gap: 0.6rem; }
+
+        .tech-stack-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+        .tech-stack-card li { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .exp-timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+        .exp-card { display: grid; grid-template-columns: 200px 1fr; gap: 2.5rem; padding: 2rem; }
+        .exp-meta { font-size: 0.8rem; color: var(--text-secondary); padding-top: 0.25rem; }
+        .exp-meta .company { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--text); display: block; margin-bottom: 0.25rem; }
+        .exp-body h4 { font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; }
+        .exp-body p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+
+        .otw-container { background: var(--text); color: var(--bg); border-radius: 24px; padding: 4rem; position: relative; overflow: hidden; }
+        .otw-container::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: var(--highlight); opacity: 0.08; }
+        html[dir="rtl"] .otw-container::before { right: auto; left: -100px; }
+        .otw-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+        .otw-container h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+        .otw-roles { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+        .otw-role { padding: 0.5rem 1.1rem; border-radius: 100px; border: 1px solid rgba(255,255,255,0.2); font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.8); }
+        .otw-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--highlight); color: #fff; padding: 0.85rem 1.8rem; border-radius: 100px; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .contact-info h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        .contact-info p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; }
+        .contact-email { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid var(--highlight); }
+        .socials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 2rem; }
+        .social-link { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.25rem; text-decoration: none; color: var(--text); }
+        .s-icon { font-size: 1.2rem; }
+        .s-name { font-weight: 500; font-size: 0.85rem; }
+        .s-handle { font-size: 0.75rem; color: var(--text-secondary); }
+
+        .contact-form-card { width: 100%; padding: 2rem; }
+        .contact-form-card h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); font-family: inherit; font-size: 0.85rem; color: var(--text); transition: border-color 0.2s; outline: none; resize: vertical; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--highlight); }
+        .form-submit { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--highlight); color: #fff; padding: 0.8rem 1.6rem; border-radius: 100px; border: none; cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 600; }
+
+        footer { padding: 3rem 2.5rem; border-top: 1px solid var(--border); max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        footer p { font-size: 0.8rem; color: var(--text-secondary); }
+        footer a { color: var(--text); text-decoration: none; font-weight: 500; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.5rem; }
+            .nav-toggle { display: block; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            section { padding: 4rem 1.5rem; }
+            .about-highlights, .cards-grid, .projects-grid, .tech-stack-grid, .contact-grid { grid-template-columns: 1fr; }
+            .exp-card { grid-template-columns: 1fr; gap: 1rem; }
+            .socials-grid, .form-row { grid-template-columns: 1fr; }
+            .hero-stats { gap: 2rem; }
+            .otw-container { padding: 2.5rem 1.5rem; }
+            footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+        }
+
+        @media (max-width: 500px) { .hero-stats { flex-direction: column; gap: 1.25rem; } }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <a href="#" class="nav-logo"><span class="logo-mark" aria-hidden="true">ب</span><span data-en="Bander" data-ar="بندر">Bander</span></a>
+    <div class="nav-links" id="navLinks">
+        <a href="#about" data-en="About" data-ar="من أنا">About</a>
+        <a href="#services" data-en="Services" data-ar="الخدمات">Services</a>
+        <a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a>
+        <a href="#tech-stack" data-en="Tech Stack" data-ar="التقنيات">Tech Stack</a>
+        <a href="#experience" data-en="Experience" data-ar="الخبرة">Experience</a>
+        <a href="#contact" class="nav-cta" data-en="Contact" data-ar="تواصل">Contact</a>
+        <button class="lang-toggle" id="langToggle" aria-label="تغيير اللغة">AR</button>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-eyebrow"><span class="dot"></span><span data-en="Available for Freelance Work" data-ar="متاح للعمل الحر">Available for Freelance Work</span></div>
+        <h1 data-html="true" data-en="Software Developer&lt;br&gt;&lt;span class='highlight'&gt;for systems and dashboards&lt;/span&gt;" data-ar="مطور برمجيات&lt;br&gt;&lt;span class='highlight'&gt;لبناء الأنظمة ولوحات التحكم&lt;/span&gt;">Software Developer<br><span class="highlight">for systems and dashboards</span></h1>
+        <p class="hero-description" data-en="I develop integrated technical platforms using Laravel and Filament, including data management, permissions, reports, API interfaces, and system integrations." data-ar="أعمل على تطوير منصات تقنية متكاملة باستخدام Laravel وFilament، تشمل إدارة البيانات، الصلاحيات، التقارير، واجهات API، وربط الأنظمة.">I develop integrated technical platforms using Laravel and Filament, including data management, permissions, reports, API interfaces, and system integrations.</p>
+        <div class="hero-actions">
+            <a href="#projects" class="btn-primary" data-en="View Projects →" data-ar="عرض المشاريع ←">View Projects →</a>
+            <a href="#contact" class="btn-secondary" data-en="Hire Me" data-ar="تواصل معي">Hire Me</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat"><h3>Laravel</h3><p data-en="System Development" data-ar="تطوير الأنظمة">System Development</p></div>
+            <div class="stat"><h3>Filament</h3><p data-en="Admin Panels" data-ar="لوحات تحكم">Admin Panels</p></div>
+            <div class="stat"><h3>APIs</h3><p data-en="System Integrations" data-ar="ربط الأنظمة">System Integrations</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="section-header"><div><p class="section-label" data-en="Who I Am" data-ar="من أنا">Who I Am</p><h2 class="section-title" data-en="About Me" data-ar="نبذة عني">About Me</h2></div></div>
+    <div class="about-grid">
+        <div class="about-text reveal">
+            <p data-html="true" data-en="I'm &lt;strong&gt;Bander&lt;/strong&gt;, a software developer focused on building dashboards, technical platforms, and business systems that help teams manage their data and operations clearly." data-ar="أنا &lt;strong&gt;بندر&lt;/strong&gt;، مطور برمجيات أركز على بناء لوحات التحكم، المنصات التقنية، وأنظمة الأعمال التي تساعد الفرق على إدارة بياناتها وعملياتها بوضوح.">I'm <strong>Bander</strong>, a software developer focused on building dashboards, technical platforms, and business systems that help teams manage their data and operations clearly.</p>
+            <p data-html="true" data-en="I work mainly with &lt;strong&gt;Laravel&lt;/strong&gt;, &lt;strong&gt;Filament&lt;/strong&gt;, &lt;strong&gt;MySQL&lt;/strong&gt;, &lt;strong&gt;Redis&lt;/strong&gt;, &lt;strong&gt;Docker&lt;/strong&gt;, and API platforms such as &lt;strong&gt;Apigee&lt;/strong&gt; and &lt;strong&gt;webMethods&lt;/strong&gt;." data-ar="أعمل بشكل أساسي باستخدام &lt;strong&gt;Laravel&lt;/strong&gt; و &lt;strong&gt;Filament&lt;/strong&gt; و &lt;strong&gt;MySQL&lt;/strong&gt; و &lt;strong&gt;Redis&lt;/strong&gt; و &lt;strong&gt;Docker&lt;/strong&gt;، بالإضافة إلى منصات API مثل &lt;strong&gt;Apigee&lt;/strong&gt; و &lt;strong&gt;webMethods&lt;/strong&gt;.">I work mainly with <strong>Laravel</strong>, <strong>Filament</strong>, <strong>MySQL</strong>, <strong>Redis</strong>, <strong>Docker</strong>, and API platforms such as <strong>Apigee</strong> and <strong>webMethods</strong>.</p>
+            <p data-en="My focus is on organized architecture, scalable systems, role-based access, dashboards, integrations, and practical tools that solve real business problems." data-ar="تركيزي على بناء أنظمة منظمة وقابلة للتوسع، مع صلاحيات واضحة، لوحات تحكم، تكاملات، وأدوات عملية تحل مشاكل حقيقية في العمل.">My focus is on organized architecture, scalable systems, role-based access, dashboards, integrations, and practical tools that solve real business problems.</p>
+            <div class="skills-grid">
+                <span class="skill-tag">Laravel</span><span class="skill-tag">PHP</span><span class="skill-tag">Filament</span><span class="skill-tag">REST APIs</span><span class="skill-tag">MySQL</span><span class="skill-tag">Redis</span><span class="skill-tag">Docker</span><span class="skill-tag">Nginx</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Blade</span><span class="skill-tag">Apigee</span><span class="skill-tag">webMethods</span><span class="skill-tag">OpenAPI / Swagger</span><span class="skill-tag">GitHub</span>
+            </div>
+        </div>
+        <div class="about-highlights reveal">
+            <div class="highlight-card"><div class="icon" aria-hidden="true">⚙️</div><h4 data-en="Systems & Dashboards" data-ar="أنظمة ولوحات تحكم">Systems & Dashboards</h4><p data-en="I build APIs, dashboards, authentication, permissions, and organized system workflows." data-ar="أبني APIs، لوحات تحكم، تسجيل دخول، صلاحيات، وتدفقات عمل منظمة داخل النظام.">I build APIs, dashboards, authentication, permissions, and organized system workflows.</p></div>
+            <div class="highlight-card"><div class="icon" aria-hidden="true">🏗️</div><h4 data-en="SaaS Builder" data-ar="بناء SaaS">SaaS Builder</h4><p data-en="Experience building multi-tenant SaaS systems with Laravel and Filament." data-ar="خبرة في بناء أنظمة SaaS متعددة المستأجرين باستخدام Laravel و Filament.">Experience building multi-tenant SaaS systems with Laravel and Filament.</p></div>
+            <div class="highlight-card"><div class="icon" aria-hidden="true">🔌</div><h4 data-en="API Integration" data-ar="تكامل APIs">API Integration</h4><p data-en="I work with REST APIs, Apigee, webMethods, OpenAPI, and external system integrations." data-ar="أعمل مع REST APIs و Apigee و webMethods و OpenAPI وتكامل الأنظمة الخارجية.">I work with REST APIs, Apigee, webMethods, OpenAPI, and external system integrations.</p></div>
+            <div class="highlight-card"><div class="icon" aria-hidden="true">📊</div><h4 data-en="Business Systems" data-ar="أنظمة أعمال">Business Systems</h4><p data-en="I build practical systems for operations, management, automation, and reporting." data-ar="أبني أنظمة عملية للعمليات، الإدارة، الأتمتة، والتقارير.">I build practical systems for operations, management, automation, and reporting.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="section-header"><div><p class="section-label" data-en="What I Offer" data-ar="ما أقدمه">What I Offer</p><h2 class="section-title" data-en="Services" data-ar="الخدمات">Services</h2><p class="section-headline" data-en="Software and technical product services for building, improving, and reviewing digital platforms." data-ar="خدمات برمجية ومنتجات تقنية لبناء المنصات الرقمية وتحسينها وفحصها.">Software and technical product services for building, improving, and reviewing digital platforms.</p></div></div>
+    <div class="cards-grid">
+        <div class="card reveal"><h4 data-en="Admin Dashboard Development" data-ar="تطوير لوحات التحكم">Admin Dashboard Development</h4><p data-en="Building practical dashboards for managing data, users, permissions, reports, and internal workflows using Laravel and Filament." data-ar="أبني لوحات تحكم عملية تساعدك على إدارة البيانات، المستخدمين، الصلاحيات، التقارير، وسير العمل الداخلي باستخدام Laravel وFilament.">Building practical dashboards for managing data, users, permissions, reports, and internal workflows using Laravel and Filament.</p></div>
+        <div class="card reveal"><h4 data-en="Technical Platforms & MVPs" data-ar="بناء منصات تقنية وMVP">Technical Platforms & MVPs</h4><p data-en="Developing scalable technical platforms and turning product ideas into testable MVPs focused on the most important features." data-ar="أطور منصات تقنية قابلة للتوسع، وأساعدك في تحويل فكرة المنتج إلى نسخة أولية قابلة للتجربة تركز على أهم الخصائص.">Developing scalable technical platforms and turning product ideas into testable MVPs focused on the most important features.</p></div>
+        <div class="card reveal"><h4 data-en="Fixing & Improving Existing Systems" data-ar="إصلاح وتحسين الأنظمة القائمة">Fixing & Improving Existing Systems</h4><p data-en="Analyzing current systems, fixing bugs, handling performance issues, and improving stability without unnecessary complexity." data-ar="أحلل المشاكل في الأنظمة الحالية، أصلح الأخطاء البرمجية، أعالج مشاكل الأداء، وأحسن استقرار النظام بدون تعقيد غير ضروري.">Analyzing current systems, fixing bugs, handling performance issues, and improving stability without unnecessary complexity.</p></div>
+        <div class="card reveal"><h4 data-en="Technical Product Review & Testing" data-ar="فحص واختبار المنتجات التقنية">Technical Product Review & Testing</h4><p data-en="Reviewing products for code quality, performance, maintainability, and common security issues with clear actionable notes." data-ar="أراجع المنتج من ناحية جودة الكود، الأداء، قابلية الصيانة، والثغرات الأمنية الشائعة، مع ملاحظات واضحة قابلة للتنفيذ.">Reviewing products for code quality, performance, maintainability, and common security issues with clear actionable notes.</p></div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="section-header"><div><p class="section-label" data-en="Selected Work" data-ar="أعمال مختارة">Selected Work</p><h2 class="section-title" data-en="Projects" data-ar="المشاريع">Projects</h2><p class="section-headline" data-en="Selected platforms and dashboards built around Laravel, Filament, and practical business workflows." data-ar="مشاريع مختارة لمنصات ولوحات تحكم مبنية حول Laravel وFilament وسير العمل العملي.">Selected platforms and dashboards built around Laravel, Filament, and practical business workflows.</p></div></div>
+    <div class="projects-grid">
+        <div class="project-card reveal"><div class="project-info"><h4>Esnad SaaS</h4><p data-en="A technical platform for law firms to manage cases, hearings, clients, invoices, documents, and permissions from one dashboard." data-ar="منصة تقنية لإدارة مكاتب المحاماة، تشمل إدارة القضايا، الجلسات، العملاء، الفواتير، المستندات، والصلاحيات داخل لوحة تحكم واحدة.">A technical platform for law firms to manage cases, hearings, clients, invoices, documents, and permissions from one dashboard.</p><div class="project-tags"><span>Laravel</span><span>Filament</span><span>Multi-Tenancy</span><span>MySQL</span><span>Redis</span><span>Docker</span></div><a href="https://getesnad.com" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="عرض موقع Esnad SaaS في تبويب جديد" data-en="View Website →" data-ar="عرض الموقع ←">View Website →</a></div></div>
+        <div class="project-card reveal"><div class="project-info"><h4>Khatmah</h4><p data-en="A platform for tracking memorization, review, and recitation plans with daily progress logging and a clear user dashboard." data-ar="منصة لتتبع الحفظ والمراجعة والتلاوة، تساعد المستخدم على تنظيم الخطة اليومية، تسجيل الإنجاز، ومتابعة التقدم من خلال لوحة استخدام واضحة.">A platform for tracking memorization, review, and recitation plans with daily progress logging and a clear user dashboard.</p><div class="project-tags"><span>Laravel</span><span>Filament</span><span>Tailwind CSS</span><span>MySQL</span></div><a href="https://khatmah.com" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="عرض موقع Khatmah في تبويب جديد" data-en="View Website →" data-ar="عرض الموقع ←">View Website →</a></div></div>
+        <div class="project-card reveal"><div class="project-info"><h4>EventSpot</h4><p data-en="An event management platform for a company or organization, with a dedicated dashboard for managing private events and related operations." data-ar="موقع لإدارة الفعاليات الخاصة بشركة أو مؤسسة معينة، مع لوحة تحكم مخصصة لإدارة الفعاليات والعمليات المرتبطة بها.">An event management platform for a company or organization, with a dedicated dashboard for managing private events and related operations.</p><div class="project-tags"><span>Laravel</span><span>Dashboard</span><span>Events</span><span>Management System</span></div><a href="https://github.com/BanderA400/EventSpot" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="عرض كود EventSpot على GitHub في تبويب جديد" data-en="View Code →" data-ar="عرض الكود ←">View Code →</a></div></div>
+        <div class="project-card reveal"><div class="project-info"><h4>Hall Booking System</h4><p data-en="A platform for managing celebration hall bookings, connecting customers with hall owners through a structured booking workflow." data-ar="منصة لإدارة قاعات الاحتفالات، تجمع بين العميل وصاحب القاعة من خلال تدفق منظم للحجز والإدارة.">A platform for managing celebration hall bookings, connecting customers with hall owners through a structured booking workflow.</p><div class="project-tags"><span>Laravel</span><span>Booking System</span><span>Dashboards</span><span>MySQL</span></div><a href="https://github.com/BanderA400/hall-booking-system" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="عرض كود Hall Booking System على GitHub في تبويب جديد" data-en="View Code →" data-ar="عرض الكود ←">View Code →</a></div></div>
+    </div>
+</section>
+
+<section id="tech-stack">
+    <div class="section-header"><div><p class="section-label" data-en="Tools I Use" data-ar="الأدوات المستخدمة">Tools I Use</p><h2 class="section-title" data-en="Tech Stack" data-ar="التقنيات">Tech Stack</h2><p class="section-headline" data-en="Technologies I use to build systems, dashboards, APIs, and deployment-ready applications." data-ar="التقنيات التي أستخدمها لبناء الأنظمة، لوحات التحكم، APIs، وتطبيقات جاهزة للنشر.">Technologies I use to build systems, dashboards, APIs, and deployment-ready applications.</p></div></div>
+    <div class="tech-stack-grid">
+        <div class="tech-stack-card reveal"><h4 data-en="Backend" data-ar="Backend">Backend</h4><ul><li>Laravel</li><li>PHP</li><li>REST APIs</li><li>Authentication</li><li>Authorization</li></ul></div>
+        <div class="tech-stack-card reveal"><h4 data-en="Frontend" data-ar="Frontend">Frontend</h4><ul><li>Blade</li><li>Tailwind CSS</li><li>Alpine.js</li><li>React Basics</li><li>Responsive UI</li></ul></div>
+        <div class="tech-stack-card reveal"><h4 data-en="Database & Infra" data-ar="قواعد البيانات والبنية">Database & Infra</h4><ul><li>MySQL</li><li>Redis</li><li>Docker</li><li>Nginx</li><li>GitHub</li></ul></div>
+        <div class="tech-stack-card reveal"><h4 data-en="Integration" data-ar="التكامل">Integration</h4><ul><li>Apigee</li><li>webMethods</li><li>OpenAPI / Swagger</li><li>Postman</li><li>API Gateway</li></ul></div>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="section-header"><div><p class="section-label" data-en="What I Do" data-ar="مجالات الخبرة">What I Do</p><h2 class="section-title" data-en="Experience" data-ar="الخبرة">Experience</h2><p class="section-headline" data-en="Practical development experience across systems, technical platforms, dashboards, and API integration." data-ar="خبرة عملية في تطوير الأنظمة، المنصات التقنية، لوحات التحكم، وتكامل APIs.">Practical development experience across systems, technical platforms, dashboards, and API integration.</p></div></div>
+    <div class="exp-timeline">
+        <div class="exp-card reveal"><div class="exp-meta"><span class="company" data-en="Systems & Dashboards" data-ar="أنظمة ولوحات تحكم">Systems & Dashboards</span><span data-en="2022 – Present" data-ar="2022 – الآن">2022 – Present</span></div><div class="exp-body"><h4 data-en="Laravel & Filament Developer" data-ar="مطور Laravel و Filament">Laravel & Filament Developer</h4><p data-en="Building technical platforms, admin dashboards, APIs, database models, authentication, permissions, and organized workflows using Laravel and Filament." data-ar="بناء منصات تقنية، لوحات تحكم، APIs، نماذج قواعد بيانات، تسجيل دخول، صلاحيات، وتدفقات عمل منظمة باستخدام Laravel و Filament.">Building technical platforms, admin dashboards, APIs, database models, authentication, permissions, and organized workflows using Laravel and Filament.</p><div class="exp-tags"><span>Laravel</span><span>Filament</span><span>SaaS</span><span>MySQL</span></div></div></div>
+        <div class="exp-card reveal"><div class="exp-meta"><span class="company" data-en="API Integration" data-ar="تكامل APIs">API Integration</span><span data-en="2020 – Present" data-ar="2020 – الآن">2020 – Present</span></div><div class="exp-body"><h4 data-en="API Developer" data-ar="مطور APIs">API Developer</h4><p data-en="Working with API design, OpenAPI specifications, Apigee policies, webMethods services, and REST API integrations." data-ar="العمل على تصميم APIs، مواصفات OpenAPI، سياسات Apigee، خدمات webMethods، وتكامل REST APIs.">Working with API design, OpenAPI specifications, Apigee policies, webMethods services, and REST API integrations.</p><div class="exp-tags"><span>Apigee</span><span>webMethods</span><span>OpenAPI</span><span>REST APIs</span></div></div></div>
+    </div>
+</section>
+
+<section id="open-to-work">
+    <div class="otw-container reveal">
+        <p class="otw-label" data-en="Open to Opportunities" data-ar="متاح للفرص">Open to Opportunities</p>
+        <h2 data-html="true" data-en="Need a software developer&lt;br&gt;for your next system?" data-ar="تحتاج مطور برمجيات&lt;br&gt;لمشروعك القادم؟">Need a software developer<br>for your next system?</h2>
+        <div class="otw-roles"><span class="otw-role" data-en="Software Development" data-ar="تطوير برمجيات">Software Development</span><span class="otw-role" data-en="Laravel Projects" data-ar="مشاريع Laravel">Laravel Projects</span><span class="otw-role" data-en="SaaS Development" data-ar="تطوير SaaS">SaaS Development</span><span class="otw-role" data-en="API Integration" data-ar="تكامل APIs">API Integration</span><span class="otw-role" data-en="Admin Dashboards" data-ar="لوحات تحكم">Admin Dashboards</span><span class="otw-role" data-en="Technical Review" data-ar="مراجعة تقنية">Technical Review</span></div>
+        <a href="mailto:b.ndr20@hotmail.com" class="otw-cta" data-en="Reach Out →" data-ar="تواصل معي ←">Reach Out →</a>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="section-header"><div><p class="section-label" data-en="Get in Touch" data-ar="تواصل">Get in Touch</p><h2 class="section-title" data-en="Contact" data-ar="التواصل">Contact</h2><p class="section-headline" data-en="Have a project, freelance work, or job opportunity? Send me a message." data-ar="عندك مشروع، فرصة عمل حر، أو فرصة وظيفية؟ أرسل لي رسالة.">Have a project, freelance work, or job opportunity? Send me a message.</p></div></div>
+    <div class="contact-grid">
+        <div class="contact-info reveal">
+            <h3 data-html="true" data-en="Let's build a reliable&lt;br&gt;system together." data-ar="خلنا نبني نظامًا واضحًا&lt;br&gt;وموثوقًا معًا.">Let's build a reliable<br>system together.</h3>
+            <p data-en="If you need a Laravel developer, platform builder, API integration work, or someone to review and improve your technical product, feel free to contact me." data-ar="إذا تحتاج مطور Laravel، بناء منصة تقنية، تكامل APIs، أو شخص يراجع ويحسن منتجك التقني، تواصل معي.">If you need a Laravel developer, platform builder, API integration work, or someone to review and improve your technical product, feel free to contact me.</p>
+            <a href="mailto:b.ndr20@hotmail.com" class="contact-email">b.ndr20@hotmail.com</a>
+            <div class="socials-grid">
+                <a href="https://www.linkedin.com/in/banderali/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="فتح LinkedIn في تبويب جديد"><span class="s-icon" aria-hidden="true">in</span><div><div class="s-name">LinkedIn</div><div class="s-handle">/in/banderali</div></div></a>
+                <a href="https://github.com/BanderA400" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="فتح GitHub في تبويب جديد"><span class="s-icon" aria-hidden="true">⌨</span><div><div class="s-name">GitHub</div><div class="s-handle">@BanderA400</div></div></a>
+                <a href="https://x.com/BanderA990" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="فتح X في تبويب جديد"><span class="s-icon" aria-hidden="true">𝕏</span><div><div class="s-name">X</div><div class="s-handle">@BanderA990</div></div></a>
+            </div>
+        </div>
+        <div class="contact-form-wrapper reveal">
+            <div class="contact-form-card">
+                <h4 data-en="Send me a message" data-ar="أرسل رسالة">Send me a message</h4>
+                <form id="contactForm">
+                    <div class="form-row"><div class="form-group"><label for="name" data-en="Name" data-ar="الاسم">Name</label><input type="text" id="name" name="name" data-placeholder-en="Your name" data-placeholder-ar="اسمك" placeholder="Your name" required></div><div class="form-group"><label for="email" data-en="Email" data-ar="البريد الإلكتروني">Email</label><input type="email" id="email" name="email" data-placeholder-en="you@example.com" data-placeholder-ar="you@example.com" placeholder="you@example.com" required></div></div>
+                    <div class="form-group"><label for="subject" data-en="Subject" data-ar="الموضوع">Subject</label><input type="text" id="subject" name="subject" data-placeholder-en="What's this about?" data-placeholder-ar="عن ماذا تريد التواصل؟" placeholder="What's this about?"></div>
+                    <div class="form-group"><label for="message" data-en="Message" data-ar="الرسالة">Message</label><textarea id="message" name="message" rows="5" data-placeholder-en="Tell me more..." data-placeholder-ar="اكتب تفاصيل رسالتك..." placeholder="Tell me more..." required></textarea></div>
+                    <button type="submit" class="form-submit" data-en="Send Message →" data-ar="إرسال الرسالة ←">Send Message →</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© <span id="year"></span> <span data-en="Bander Information Technology Est." data-ar="مؤسسة بندر لتقنية المعلومات">Bander Information Technology Est.</span></p>
+    <a href="#" data-en="Back to top ↑" data-ar="العودة للأعلى ↑">Back to top ↑</a>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    function setMenuState(isOpen) {
+        links.classList.toggle('open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'إغلاق القائمة' : 'فتح القائمة');
+    }
+    toggle.addEventListener('click', () => setMenuState(!links.classList.contains('open')));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenuState(false)));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    const langToggle = document.getElementById('langToggle');
+    const translatable = document.querySelectorAll('[data-en][data-ar]');
+    const placeholderFields = document.querySelectorAll('[data-placeholder-en][data-placeholder-ar]');
+    const contactEmail = 'b.ndr20@hotmail.com';
+
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.title = lang === 'ar' ? 'بندر | مطور برمجيات' : 'Bander | Software Developer';
+        translatable.forEach(el => {
+            if (el.dataset.html === 'true') {
+                el.innerHTML = el.dataset[lang];
+                return;
+            }
+
+            el.textContent = el.dataset[lang];
+        });
+        placeholderFields.forEach(el => {
+            el.placeholder = el.dataset[`placeholder${lang === 'ar' ? 'Ar' : 'En'}`];
+        });
+        langToggle.textContent = lang === 'ar' ? 'EN' : 'AR';
+        langToggle.setAttribute('aria-label', lang === 'ar' ? 'تغيير اللغة إلى الإنجليزية' : 'Change language to Arabic');
+        localStorage.setItem('siteLanguage', lang);
+    }
+
+    langToggle.addEventListener('click', () => {
+        const nextLang = document.documentElement.lang === 'ar' ? 'en' : 'ar';
+        setLanguage(nextLang);
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+        const name = formData.get('name') || '';
+        const email = formData.get('email') || '';
+        const subject = formData.get('subject') || 'رسالة من الموقع الشخصي';
+        const message = formData.get('message') || '';
+        const body = `الاسم: ${name}\nالبريد: ${email}\n\n${message}`;
+
+        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+
+    setLanguage(localStorage.getItem('siteLanguage') || 'ar');
+</script>
+
+</body>
+</html>
